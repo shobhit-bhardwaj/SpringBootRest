@@ -48,11 +48,11 @@ public class EmployController {
 		return new Response<>(ResponseType.SUCCESS, employ);
 	}
 
-	@RequestMapping (value = "/", method = RequestMethod.PUT)
-	public Response<String> updateEmploy(@RequestBody EmployBean employ) {
+	@RequestMapping (value = "/{id}", method = RequestMethod.PUT)
+	public Response<String> updateEmploy(@PathVariable int id, @RequestBody EmployBean employ) {
 		System.out.println("-- updateEmploy -- " + employ);
 
-		employService.updateEmploy(employ);
+		employService.updateEmploy(id, employ);
 
 		return new Response<>(ResponseType.SUCCESS);
 	}
