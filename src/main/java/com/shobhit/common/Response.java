@@ -5,12 +5,6 @@ public class Response<T> {
 	private String responseMessage;
 	private T responseData;
 
-	public Response(int responseCode, String responseMessage, T responseData) {
-		this.responseCode = responseCode;
-		this.responseMessage = responseMessage;
-		this.responseData = responseData;
-	}
-
 	public Response(ResponseType responseType, T responseData) {
 		this.responseCode = responseType.getResponseCode();
 		this.responseMessage = responseType.getResponseMessage();
