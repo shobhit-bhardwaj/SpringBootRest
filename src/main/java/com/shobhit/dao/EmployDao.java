@@ -7,31 +7,34 @@ import org.springframework.stereotype.Repository;
 
 import com.shobhit.bean.EmployBean;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Repository
 public class EmployDao {
 	private List<EmployBean> employs = new ArrayList<>();
 
 	public void addEmploy(EmployBean employ) {
-		System.out.println("-- addEmploy DAO --");
+		log.info("-- addEmploy DAO --");
 
 		employs.add(employ);
 	}
 
 	public List<EmployBean> listEmploys() {
-		System.out.println("-- listEmploys DAO --");
+		log.info("-- listEmploys DAO --");
 
 		return employs;
 	}
 
 	public EmployBean getEmploy(int id) {
-		System.out.println("-- getEmploy DAO --");
+		log.info("-- getEmploy DAO --");
 
 		EmployBean employBean = employs.stream().filter(employ -> employ.getId() == id).findFirst().get();
 		return employBean;
 	}
 
 	public void updateEmploy(int id, EmployBean employ) {
-		System.out.println("-- updateEmploy DAO --");
+		log.info("-- updateEmploy DAO --");
 
 		for(EmployBean updateEmploy : employs)
 			if(updateEmploy.getId() == id) {
@@ -43,7 +46,7 @@ public class EmployDao {
 	}
 
 	public void deleteEmploy(int id) {
-		System.out.println("-- deleteEmploy DAO --");
+		log.info("-- deleteEmploy DAO --");
 
 		employs.removeIf(employ -> employ.getId() == id);
 	}

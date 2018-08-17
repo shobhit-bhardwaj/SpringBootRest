@@ -14,6 +14,9 @@ import com.shobhit.common.Response;
 import com.shobhit.common.ResponseType;
 import com.shobhit.service.EmployService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping (value = "/employ")
 public class EmployController {
@@ -23,7 +26,7 @@ public class EmployController {
 
 	@RequestMapping (value = "/", method = RequestMethod.POST)
 	public Response<String> addEmploy(@RequestBody EmployBean employ) {
-		System.out.println("-- addEmploy -- " + employ);
+		log.info("-- addEmploy -- " + employ);
 
 		employService.addEmploy(employ);
 
@@ -32,7 +35,7 @@ public class EmployController {
 
 	@RequestMapping (value = "/", method = RequestMethod.GET)
 	public Response<List<EmployBean>> listEmploys() {
-		System.out.println("-- listEmploys Controller --");
+		log.info("-- listEmploys Controller --");
 
 		List<EmployBean> employs = employService.listEmploys();
 
@@ -41,7 +44,7 @@ public class EmployController {
 
 	@RequestMapping (value = "/{id}", method = RequestMethod.GET)
 	public Response<EmployBean> getEmploy(@PathVariable int id) {
-		System.out.println("-- getEmploy Controller -- " + id);
+		log.info("-- getEmploy Controller -- " + id);
 
 		EmployBean employ = employService.getEmploy(id);
 
@@ -50,7 +53,7 @@ public class EmployController {
 
 	@RequestMapping (value = "/{id}", method = RequestMethod.PUT)
 	public Response<String> updateEmploy(@PathVariable int id, @RequestBody EmployBean employ) {
-		System.out.println("-- updateEmploy -- " + employ);
+		log.info("-- updateEmploy -- " + employ);
 
 		employService.updateEmploy(id, employ);
 
@@ -59,7 +62,7 @@ public class EmployController {
 
 	@RequestMapping (value = "/{id}", method = RequestMethod.DELETE)
 	public Response<String> deleteEmploy(@PathVariable int id) {
-		System.out.println("-- deleteEmploy Controller -- " + id);
+		log.info("-- deleteEmploy Controller -- " + id);
 
 		employService.deleteEmploy(id);
 
