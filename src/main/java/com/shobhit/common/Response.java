@@ -5,15 +5,15 @@ public class Response<T> {
 	private String responseMessage;
 	private T responseData;
 
+	public Response(ResponseType responseType) {
+		this.responseCode = responseType.getResponseCode();
+		this.responseMessage = responseType.getResponseMessage();
+	}
+
 	public Response(ResponseType responseType, T responseData) {
 		this.responseCode = responseType.getResponseCode();
 		this.responseMessage = responseType.getResponseMessage();
 		this.responseData = responseData;
-	}
-
-	public Response(ResponseType responseType) {
-		this.responseCode = responseType.getResponseCode();
-		this.responseMessage = responseType.getResponseMessage();
 	}
 
 	public int getResponseCode() {
